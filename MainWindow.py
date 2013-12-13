@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Antenatal Clinic Booking System")
 
         #Lables
-        self.title_label = QLabel("Booking System")
+        self.title_label = QLabel("""<center><font size="6">Booking System</font>""")
 
         #Buttons
         self.add_button = QPushButton("Add Appointment")
@@ -31,6 +31,7 @@ class MainWindow(QMainWindow):
         self.widget = QWidget()
         self.widget.setLayout(self.main_layout)
         self.setCentralWidget(self.widget)
+        
 
 if __name__ == "__main__":
     application = QApplication(sys.argv)
