@@ -8,7 +8,8 @@ import sys
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
+        self.setMinimumHeight(200)
+        self.setMinimumWidth(300)
         self.setWindowTitle("Antenatal Clinic Booking System")
 
         #Lables
@@ -31,6 +32,11 @@ class MainWindow(QMainWindow):
         self.widget = QWidget()
         self.widget.setLayout(self.main_layout)
         self.setCentralWidget(self.widget)
+
+        self.add_patient_connect = AddPatient()
+        
+        self.add_button.clicked.connect(self.add_patient_connect.show)
+
         
 
 if __name__ == "__main__":
