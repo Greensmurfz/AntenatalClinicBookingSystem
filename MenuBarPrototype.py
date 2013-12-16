@@ -1,6 +1,8 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import*
+from MainWindow import *
+from AddPatient import *
 
 import sys
 
@@ -11,13 +13,13 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Appointment System")
         
         self.menu_bar = QMenuBar()
+        
         self.add_menu = self.menu_bar.addMenu("Add")
         self.add_menu.addAction("Add Patient")
 
         self.browse_menu = self.menu_bar.addMenu("Browse")
-
-        
-        
+        self.browse_menu.addAction("Patients")
+               
         self.setMenuBar(self.menu_bar)
 
             
