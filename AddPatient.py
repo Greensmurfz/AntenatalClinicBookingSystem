@@ -34,6 +34,7 @@ class AddPatient(QMainWindow):
         self.telephone_line = QLineEdit()
         self.nhs_line = QLineEdit()
         self.dob_line = QLineEdit()
+        self.dob_line.setPlaceholderText("YYYY/MM/DD")
         self.weeks_pregnant_line = QLineEdit()
         self.hospital_number_line = QLineEdit()
 
@@ -54,7 +55,6 @@ class AddPatient(QMainWindow):
         self.main_layout.addWidget(self.hospital_number_line,5,1)
         self.main_layout.addWidget(self.telephone,6,0)
         self.main_layout.addWidget(self.telephone_line,6,1)
-        
         self.main_layout.addWidget(self.house_no,0,2)
         self.main_layout.addWidget(self.house_no_line,0,3)
         self.main_layout.addWidget(self.street,1,2)
@@ -70,6 +70,7 @@ class AddPatient(QMainWindow):
         self.setCentralWidget(self.widget)
 
         self.clear_button.clicked.connect(self.clear_clicked)
+      
 
     def clear_clicked(self):
         self.first_name_line.clear()
