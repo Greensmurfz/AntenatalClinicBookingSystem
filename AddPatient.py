@@ -1,6 +1,7 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import*
+import sqlite3
 
 import sys
 
@@ -33,6 +34,7 @@ class AddPatient(QMainWindow):
         self.post_code_line = QLineEdit()
         self.telephone_line = QLineEdit()
         self.nhs_line = QLineEdit()
+        self.nhs_line.setPlaceholderText("000-000-0000")
         self.dob_line = QLineEdit()
         self.dob_line.setPlaceholderText("YYYY/MM/DD")
         self.weeks_pregnant_line = QLineEdit()
@@ -70,6 +72,7 @@ class AddPatient(QMainWindow):
         self.setCentralWidget(self.widget)
 
         self.clear_button.clicked.connect(self.clear_clicked)
+        self.submit_button.clicked.connect(self.submit_data)
       
 
     def clear_clicked(self):
@@ -83,6 +86,14 @@ class AddPatient(QMainWindow):
         self.dob_line.clear()
         self.weeks_pregnant_line.clear()
         self.hospital_number_line.clear()
+
+    def submit_data(self):
+        values = (self.nhs_line.text(),self.first_name_line.text(),self.first_name_line.text(),self.last_name_line.text(),self.street_line.text(),self.post_code_line.text(),self.telephone_line.text(),self.dob_line.text(),self.weeks_pregnant_line.text(),self.hospital_number_line.text(),)
+        with sqlite3.connect("Booking System.db") as db:
+            cursor = db.cursor()
+            sql = """insert into Patient_Details(NHSNumber,FirstName,LastName,Address,PhoneNumber,WeeksPregnant,DateOfBirth) values(?,?,?,?,?,?,?)"""
+            cursor.execute(sql,values)
+            db.commit()
 
 if __name__ == "__main__":
     application = QApplication(sys.argv)
