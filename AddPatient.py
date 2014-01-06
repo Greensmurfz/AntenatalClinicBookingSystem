@@ -88,10 +88,30 @@ class AddPatient(QMainWindow):
         self.hospital_number_line.clear()
 
     def submit_data(self):
-        values = (self.nhs_line.text(),self.first_name_line.text(),self.first_name_line.text(),self.last_name_line.text(),self.street_line.text(),self.post_code_line.text(),self.telephone_line.text(),self.dob_line.text(),self.weeks_pregnant_line.text(),self.hospital_number_line.text(),)
+        values = (self.nhs_line.text(),
+                  self.first_name_line.text(),
+                  self.last_name_line.text(),
+                  self.house_no_line.text(),
+                  self.street_line.text(),
+                  self.post_code_line.text(),
+                  self.telephone_line.text(),
+                  self.dob_line.text(),
+                  self.weeks_pregnant_line.text(),
+                  self.hospital_number_line.text(),)
         with sqlite3.connect("Booking System.db") as db:
             cursor = db.cursor()
-            sql = """insert into Patient_Details(NHSNumber,FirstName,LastName,Address,PhoneNumber,WeeksPregnant,DateOfBirth) values(?,?,?,?,?,?,?)"""
+            sql = """insert into Patient_Details
+                     (NHSNumber,
+                     FirstName,
+                     LastName,
+                     HouseNumber,
+                     Street,
+                     Postcode,
+                     PhoneNumber,
+                     DateOfBirth,
+                     WeeksPregnant,
+                     HospitalNumber)
+                     values(?,?,?,?,?,?,?,?,?,?)"""
             cursor.execute(sql,values)
             db.commit()
 

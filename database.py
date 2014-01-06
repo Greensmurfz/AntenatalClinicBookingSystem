@@ -5,7 +5,7 @@ def create_table():
         cursor = db.cursor()
         cursor.execute("PRAGMA foreign_keys = ON")
 
-        sql= "create table Patient_Details(NHSNumber integer, FirstName text, LastName text, Address text, PhoneNumber integer, WeeksPregnant integer, DateOfBirth integer, Primary Key(NHSNumber))"
+        sql= "create table Patient_Details(NHSNumber integer, FirstName text, LastName text, Street text, HouseNumber integer, Postcode text, PhoneNumber integer, WeeksPregnant integer, DateOfBirth integer, HospitalNumber, Primary Key(NHSNumber))"
         cursor.execute(sql)
 
      
