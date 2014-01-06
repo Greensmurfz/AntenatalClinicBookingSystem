@@ -25,7 +25,7 @@ class AddPatient(QMainWindow):
     
         #Buttons
         self.submit_button = QPushButton("Submit")
-        self.clear_button = QPushButton("Clear")
+        self.clear_button = QPushButton("Clear All")
         #Lines
         self.first_name_line = QLineEdit()
         self.last_name_line = QLineEdit()
@@ -114,7 +114,18 @@ class AddPatient(QMainWindow):
                      values(?,?,?,?,?,?,?,?,?,?)"""
             cursor.execute(sql,values)
             db.commit()
-
+        self.first_name_line.clear()
+        self.last_name_line.clear()
+        self.street_line.clear()
+        self.house_no_line.clear()
+        self.post_code_line.clear()
+        self.nhs_line.clear()
+        self.telephone_line.clear()
+        self.dob_line.clear()
+        self.weeks_pregnant_line.clear()
+        self.hospital_number_line.clear()
+            
+           
 if __name__ == "__main__":
     application = QApplication(sys.argv)
     window = AddPatient()
