@@ -2,6 +2,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import *
 from AddPatient import *
+from ViewPatientDetails import *
 
 import sys
 
@@ -18,7 +19,7 @@ class MainWindow(QMainWindow):
         #Buttons
         self.add_button = QPushButton("Add Appointment")
         self.manage_button = QPushButton("Manage Appointment")
-        self.view_button = QPushButton("View Appointments")
+        self.view_button = QPushButton("View/Edit Appointments")
         
         #Layout
         self.main_layout = QVBoxLayout()
@@ -36,6 +37,10 @@ class MainWindow(QMainWindow):
         self.add_patient_connect = AddPatient()
         
         self.add_button.clicked.connect(self.add_patient_connect.show)
+
+        self.view_details_connect = ViewDetails()
+
+        self.view_button.clicked.connect(self.view_details_connect.show)
 
         
 
