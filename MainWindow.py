@@ -42,6 +42,10 @@ class MainWindow(QMainWindow):
 
         self.view_button.clicked.connect(self.view_details_connect.show)
 
+        self.close_connect = self.widget.hide()
+
+        self.manage_button.clicked.connect(self.close_connect)
+
         
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ class ViewDetails(QMainWindow):
         super().__init__()
         self.setMinimumHeight(600)
         self.setMinimumWidth(1035)
-        self.setWindowTitle("View/Edit Details")
+        self.setWindowTitle("View/Edit Patient Details")
         self.db = QSqlDatabase.addDatabase("QSQLITE")
         self.db.setDatabaseName("Booking System.db")
         self.db.open()
