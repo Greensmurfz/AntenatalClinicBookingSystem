@@ -4,7 +4,7 @@ from PyQt4.QtSql import *
 
 import sys
 
-class ViewDetails(QMainWindow):
+class ViewDetails(QWidget):
     def __init__ (self):
         super().__init__()
         self.setMinimumHeight(600)
@@ -19,15 +19,10 @@ class ViewDetails(QMainWindow):
 
         self.layout = QGridLayout()
         self.layout.addWidget(self.table_view,0,0,1,3)
-        self.layout.addWidget(self.submit_changes_button,1,1)
+        self.layout.addWidget(self.submit_changes_button,2,1,1,1)
 
-        self.widget = QWidget()
-        self.widget.setLayout(self.layout)
-        
-        self.setCentralWidget(self.widget)
-
+        self.setLayout(self.layout)
         self.create_table_model()
-
         self.submit_changes_button.clicked.connect(self.update_details)    
 
     def create_table_model(self):

@@ -1,11 +1,12 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import*
+from MainWindow import *
 import sqlite3
 
 import sys
 
-class AddPatient(QMainWindow):
+class AddPatient(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -22,10 +23,12 @@ class AddPatient(QMainWindow):
         self.dob = QLabel("Date of Birth")
         self.weeks_pregnant = QLabel("Weeks Pregnant")
         self.hospital_number = QLabel("Hospital Number")
+        self.blank = QLabel("")
     
         #Buttons
         self.submit_button = QPushButton("Submit")
         self.clear_button = QPushButton("Clear All")
+        self.back_button = QPushButton("Back")
         #Lines
         self.first_name_line = QLineEdit()
         self.last_name_line = QLineEdit()
@@ -58,21 +61,20 @@ class AddPatient(QMainWindow):
         self.main_layout.addWidget(self.telephone,6,0)
         self.main_layout.addWidget(self.telephone_line,6,1)
         self.main_layout.addWidget(self.house_no,0,2)
-        self.main_layout.addWidget(self.house_no_line,0,3)
+        self.main_layout.addWidget(self.house_no_line,0,4)
         self.main_layout.addWidget(self.street,1,2)
-        self.main_layout.addWidget(self.street_line,1,3)
+        self.main_layout.addWidget(self.street_line,1,4)
         self.main_layout.addWidget(self.post_code,2,2)
-        self.main_layout.addWidget(self.post_code_line,2,3)
+        self.main_layout.addWidget(self.post_code_line,2,4)
         self.main_layout.addWidget(self.clear_button)
         self.main_layout.addWidget(self.submit_button)
+        self.main_layout.addWidget(self.back_button,7,4)
+        self.main_layout.addWidget(self.blank,0,3)
 
-        
-        self.widget = QWidget()
-        self.widget.setLayout(self.main_layout)
-        self.setCentralWidget(self.widget)
-
+        self.setLayout(self.main_layout)
         self.clear_button.clicked.connect(self.clear_clicked)
         self.submit_button.clicked.connect(self.submit_data)
+        #self.back_button.clicked.connect(self.back)
       
 
     def clear_clicked(self):
@@ -124,8 +126,12 @@ class AddPatient(QMainWindow):
         self.dob_line.clear()
         self.weeks_pregnant_line.clear()
         self.hospital_number_line.clear()
-            
-           
+
+    def back(self):
+        pass
+        
+        
+                                                    
 if __name__ == "__main__":
     application = QApplication(sys.argv)
     window = AddPatient()
