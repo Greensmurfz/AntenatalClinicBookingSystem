@@ -2,6 +2,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import*
 from MainWindow import *
+from AddAppointment import *
 import sqlite3
 
 import sys
@@ -74,7 +75,7 @@ class AddPatient(QWidget):
         self.setLayout(self.main_layout)
         self.clear_button.clicked.connect(self.clear_clicked)
         self.submit_button.clicked.connect(self.submit_data)
-        #self.back_button.clicked.connect(self.back)
+        self.back_button.clicked.connect(self.back)
       
 
     def clear_clicked(self):
@@ -116,6 +117,11 @@ class AddPatient(QWidget):
                      values(?,?,?,?,?,?,?,?,?,?)"""
             cursor.execute(sql,values)
             db.commit()
+
+        self.window = QMainWindow
+        self.appointment= AddAppointment()
+        self.window.setCentralWidget(self.appointment)
+            
         self.first_name_line.clear()
         self.last_name_line.clear()
         self.street_line.clear()
@@ -126,10 +132,13 @@ class AddPatient(QWidget):
         self.dob_line.clear()
         self.weeks_pregnant_line.clear()
         self.hospital_number_line.clear()
+        
+        
 
     def back(self):
-        pass
-        
+        application = QApplication(sys.argv)
+        main_window = MainWindow()
+        main_window.show()
         
                                                     
 if __name__ == "__main__":
